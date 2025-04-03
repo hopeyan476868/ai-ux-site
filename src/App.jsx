@@ -89,7 +89,7 @@ function Section({ title, children }) {
     <Card className="mb-6">
       <CardContent className="p-4 space-y-2">
         <h2 className="text-xl font-semibold">{title}</h2>
-        <p className="text-base leading-relaxed">{children}</p>
+        <div className="text-base leading-relaxed">{children}</div>
       </CardContent>
     </Card>
   );
