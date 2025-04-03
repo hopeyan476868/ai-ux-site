@@ -28,29 +28,29 @@ export default function AIUXTrendPage() {
   return (
     <div className={`${darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-black'} min-h-screen transition-colors duration-500`}>
       <nav className="fixed w-full z-50 bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-500">
-        <div className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
-          <div className="flex items-center space-x-3">
+        <div className="flex flex-wrap items-center justify-between px-4 py-3 max-w-6xl mx-auto">
+          <div className="flex items-center space-x-3 w-full md:w-auto">
             <img src="/logo.svg" alt="Logo" className="w-8 h-8" />
-            <span className="text-xl font-bold">AI UX Insight</span>
+            <span className="text-lg md:text-xl font-bold whitespace-nowrap">AI UX Insight</span>
           </div>
-          <div className="flex items-center space-x-4">
-            <a href="#impact" className="text-sm font-medium hover:underline">影响</a>
-            <a href="#strategies" className="text-sm font-medium hover:underline">对策</a>
-            <a href="#future" className="text-sm font-medium hover:underline">趋势</a>
-            <Button onClick={() => setDarkMode(!darkMode)}>
+          <div className="flex flex-wrap justify-start md:justify-end items-center gap-2 w-full md:w-auto mt-2 md:mt-0">
+            <a href="#impact" className="text-sm md:text-base font-medium hover:underline whitespace-nowrap">影响</a>
+            <a href="#strategies" className="text-sm md:text-base font-medium hover:underline whitespace-nowrap">对策</a>
+            <a href="#future" className="text-sm md:text-base font-medium hover:underline whitespace-nowrap">趋势</a>
+            <Button onClick={() => setDarkMode(!darkMode)} className="text-sm md:text-base">
               {darkMode ? "🌞 Light" : "🌙 Dark"}
             </Button>
           </div>
         </div>
       </nav>
 
-      <main className="pt-28 px-6 space-y-8 max-w-4xl mx-auto">
-        <motion.h1 className="text-4xl font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <main className="pt-28 px-4 md:px-6 space-y-8 max-w-4xl mx-auto">
+        <motion.h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           AI 对 UX 体验设计师的影响与未来趋势
         </motion.h1>
 
         <Tabs defaultValue="impact" className="w-full">
-          <TabsList className="grid grid-cols-3">
+          <TabsList className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <TabsTrigger value="impact" id="impact">AI 如何影响 UX</TabsTrigger>
             <TabsTrigger value="strategies" id="strategies">设计师如何应对</TabsTrigger>
             <TabsTrigger value="future" id="future">未来 5~10 年趋势</TabsTrigger>
@@ -136,8 +136,8 @@ function Section({ title, children }) {
   return (
     <Card className="mb-6">
       <CardContent className="p-4 space-y-2">
-        <h2 className="text-xl font-semibold">{title}</h2>
-        <div className="text-base leading-relaxed">{children}</div>
+        <h2 className="text-lg sm:text-xl font-semibold">{title}</h2>
+        <div className="text-sm sm:text-base leading-relaxed">{children}</div>
       </CardContent>
     </Card>
   );
