@@ -1,82 +1,96 @@
-import React from "react";
-import { Card, CardContent } from './components/ui/card';
-import { Badge } from './components/ui/badge';
-import { Button } from './components/ui/button';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { motion } from "framer-motion";
 
-const sections = [
-  {
-    title: "AI对UX设计流程的影响",
-    items: [
-      "生成式AI加速创意产出（文生图、界面原型生成）",
-      "用户行为分析AI推动数据驱动设计",
-      "智能推荐系统实现高度个性化体验",
-      "对话式UX与语音交互扩展设计边界",
-      "设计工具智能化提升效率"
-    ]
-  },
-  {
-    title: "UX设计师如何利用AI提升职场竞争力",
-    items: [
-      "自动化繁琐事务，节省时间投入战略工作",
-      "借助AI激发灵感，拓展创意维度",
-      "数据驱动决策，提升设计说服力",
-      "跨学科协作，扩大个人技能边界"
-    ]
-  },
-  {
-    title: "AI可替代与难以替代的部分",
-    items: [
-      "✅ 可替代：重复性制作任务、基础数据分析、模板化UI生成",
-      "❌ 难以替代：战略洞察、创造力、情感共鸣、伦理判断与团队沟通"
-    ]
-  },
-  {
-    title: "未来5年趋势（至2030年）",
-    items: [
-      "人机协作成为设计新常态",
-      "工具全面智能化，流程高度自动化",
-      "体验范围扩展至服务与全旅程（EX）",
-      "个性化与无界面交互加速发展",
-      "新型岗位如AI体验设计师涌现"
-    ]
-  },
-  {
-    title: "未来10年趋势（至2035年）",
-    items: [
-      "AI成为设计过程的主力执行者，设计师转为策展与监督角色",
-      "AI嵌入团队决策，成为虚拟协作者",
-      "用户体验实时个性化与情境感知",
-      "行业重构，策略型与技术型设计师主导",
-      "设计伦理成为核心价值"
-    ]
-  }
-];
-
-export default function App() {
+export default function AIUXTrendPage() {
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-8">
-      <h1 className="text-3xl font-bold text-center">AI 时代的 UX 设计趋势</h1>
-      <p className="text-center text-gray-500 text-lg">
-        洞察人工智能如何影响 UX 设计职业与未来发展
-      </p>
+    <div className="p-6 space-y-8">
+      <motion.h1 className="text-4xl font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        AI 对 UX 体验设计师的影响与未来趋势
+      </motion.h1>
 
-      {sections.map((section, idx) => (
-        <div key={idx} className="bg-white p-4 rounded-2xl shadow-md space-y-4">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
-            <Badge>{idx + 1}</Badge>
-            {section.title}
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-base">
-            {section.items.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <Tabs defaultValue="impact" className="w-full">
+        <TabsList className="grid grid-cols-3">
+          <TabsTrigger value="impact">AI 如何影响 UX</TabsTrigger>
+          <TabsTrigger value="strategies">设计师如何应对</TabsTrigger>
+          <TabsTrigger value="future">未来 5~10 年趋势</TabsTrigger>
+        </TabsList>
 
-      <div className="text-center pt-10">
-        <Button size="lg">立即学习 AI 工具</Button>
-      </div>
+        <TabsContent value="impact">
+          <ScrollArea className="h-[600px] p-4">
+            <Section title="1. 生成式 AI 助力设计">
+              文本生成、图像生成、原型自动化，大幅提高创意效率。
+            </Section>
+            <Section title="2. 用户行为分析 AI">
+              数据洞察支持用户研究与产品优化。
+            </Section>
+            <Section title="3. 智能推荐与个性化">
+              支持千人千面的体验，打造动态界面。
+            </Section>
+            <Section title="4. 对话式 UX">
+              智能客服、语音交互成为新交互范式。
+            </Section>
+            <Section title="5. 工具智能化">
+              设计系统自动调整、AI 插件一键生成样稿。
+            </Section>
+          </ScrollArea>
+        </TabsContent>
+
+        <TabsContent value="strategies">
+          <ScrollArea className="h-[600px] p-4">
+            <Section title="1. 提升 AI 素养">
+              学习使用生成式工具，如 ChatGPT、Midjourney、AI 插件等。
+            </Section>
+            <Section title="2. 聚焦战略设计">
+              从产出型角色转向策略型角色。
+            </Section>
+            <Section title="3. 跨学科沟通协作">
+              能与 PM、AI 工程、数据科学家合作无障碍。
+            </Section>
+            <Section title="4. 强化人文价值">
+              关注伦理、公平与无障碍体验，AI 时代更需设计师守护用户。
+            </Section>
+            <Section title="5. 打造复合技能组合">
+              数据分析、内容策略、服务设计等能力融合。
+            </Section>
+          </ScrollArea>
+        </TabsContent>
+
+        <TabsContent value="future">
+          <ScrollArea className="h-[600px] p-4">
+            <Section title="未来 5 年">
+              <ul className="list-disc pl-4 space-y-1">
+                <li>人机协作成为新常态</li>
+                <li>设计流程自动化显著增强</li>
+                <li>界面高度个性化与动态生成</li>
+                <li>EX 全旅程设计主导设计方向</li>
+              </ul>
+            </Section>
+            <Section title="未来 10 年">
+              <ul className="list-disc pl-4 space-y-1">
+                <li>设计自动化成熟，AI 成为设计伙伴</li>
+                <li>AI 成为 UX 团队智能协作成员</li>
+                <li>体验跨越设备，情境感知成主流</li>
+                <li>新岗位如 AI 训练师、AI 体验设计师出现</li>
+                <li>以人为本的伦理设计成为设计核心</li>
+              </ul>
+            </Section>
+          </ScrollArea>
+        </TabsContent>
+      </Tabs>
     </div>
+  );
+}
+
+function Section({ title, children }) {
+  return (
+    <Card className="mb-6">
+      <CardContent className="p-4 space-y-2">
+        <h2 className="text-xl font-semibold">{title}</h2>
+        <p className="text-base leading-relaxed">{children}</p>
+      </CardContent>
+    </Card>
   );
 }
